@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nota Secreta</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #eee;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    input {
+      padding: 10px;
+      font-size: 18px;
+      width: 200px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    #mensaje {
+      margin-top: 30px;
+      font-size: 22px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <h1>Introduce el código secreto</h1>
+  <input type="text" id="codigo" placeholder="Código aquí">
+  <button onclick="verificar()">Enviar</button>
+  <div id="mensaje"></div>
+
+  <script>
+    const inputField = document.getElementById('codigo');
+
+    function verificar() {
+      const input = inputField.value.trim().toUpperCase();
+      const mensaje = document.getElementById('mensaje');
+
+      if (input === "FAS") {
+        mensaje.textContent = "well done";
+        mensaje.style.color = "lightgreen";
+      } else {
+        mensaje.textContent = "keep searching son";
+        mensaje.style.color = "red";
+      }
+      inputField.value = '';
+    }
+
+    inputField.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') verificar();
+    });
+  </script>
+</body>
+</html>
